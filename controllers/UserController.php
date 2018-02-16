@@ -1,8 +1,16 @@
 <?php
     include_once 'controller.php';
+    include_once '../config.php';
     class UserController{
+        public function index()
+        {
+            # code...
+            $users=User::all();
+            render('page',array('pageTitle' => 'Manage Directory', 'users' => $users));
+        }
         public function create(array $data)
         {
+            
             $user = new User();
             $user->fname = $data['fname'];
             $user->lname = $data['lname'];
@@ -19,6 +27,21 @@
             $user->password=password_hash($data['password'],PASSWORD_BCRYPT);       
             $user->dept=$data['dept'];                    
             $user->save();
+        }
+        public function edit()
+        {
+            # code...
+        }
+        public function update()
+        {
+            # code...
+        }
+        public function delete($id)
+        {
+            # code...
+            $user = new User();
+            $user=User::find($id);
+            $user->delete();
         }
 
 
@@ -37,6 +60,6 @@
     ];
     // $uc->create($arr);
   
-//  $userdl=User::find_by_fname('asd') ;
-//   $userdl->delete();
-//   echo "Deleted";
+    //   $user=User::find(1) ;
+    // print_r($user);     
+    $uc->index();

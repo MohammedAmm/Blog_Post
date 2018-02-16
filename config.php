@@ -11,7 +11,7 @@ $blade = new Blade($views, $cache);
 
 function render($myPath,$myContext)
 {
-    global $blade;
     # code..
+    global $blade;
     print $blade->view()->make($myPath, $myContext);
 }
