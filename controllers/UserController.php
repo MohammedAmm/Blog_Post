@@ -9,23 +9,16 @@
             render('page',array('pageTitle' => 'Manage Directory', 'users' => $users));
         }
         public function create(array $data)
-        {
-            
+        {    
             $user = new User();
+            $user->username=$data['username'];        
+            $user->password=password_hash($data['password'],PASSWORD_BCRYPT);
             $user->fname = $data['fname'];
             $user->lname = $data['lname'];
-            $user->addr = $data['add'];
-            $user->count = $data['count'];
             $user->gender = $data['gender']; 
-            $skills="";
-            foreach ($data['skills'] as $value) {
-                # code...
-                    $skills.="#".$value;
-                }   
-            $user->skills=$skills;
-            $user->uname=$data['uname'];        
-            $user->password=password_hash($data['password'],PASSWORD_BCRYPT);       
-            $user->dept=$data['dept'];                    
+            $user->country = $data['count'];
+            $user->status=0;
+            $user->role=0;
             $user->save();
         }
         public function edit()
@@ -50,16 +43,15 @@
     $arr=[
         'fname'=>'nora',
         'lname'=>'ashraf',
-        'add'=>'asas',
         'count'=>'ay',
         'gender'=>'male',
-        'skills'=>['php'],
-        'uname'=>'focusss',
+        'username'=>'focus',
         'password'=>'123',
         'dept'=>'OS'
     ];
-    // $uc->create($arr);
+//    / $uc->create($arr);
   
-    //   $user=User::find(1) ;
-    // print_r($user);     
-    $uc->index();
+       $user=User::find(1) ;
+    // print_r($user);
+    print_r($user->posts);     
+    
