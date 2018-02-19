@@ -103,6 +103,12 @@
             $post->delete();
         }
 
+public function deleteComment($id){
+            $comment=new Comment();
+            $comment=Comment::find($id);
+            $comment->delete();
+        }
+
 
     }
     $uc=new PostController();
@@ -114,6 +120,8 @@
         $uc->specificPost($desiredCategory);
     }else if(isset($_GET['add'])){
         $uc->addPage();
+    }else if(isset($_GET['delCom'])){
+        $uc->deleteComment($_GET['id']);
     }else if(isset($_POST['op'])&&$_POST['op']=="add"){
         $uc->create($_POST);
         header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -121,16 +129,3 @@
         $uc->index();
     }
    
-    
-    $arr=[
-       'user_id'=>1,    
-       'title'=>'First Post',
-       'body'=>'This is my first post',
-       'category_id'=>1
-    ];
-  //  $uc->create($arr);
-//   $cat=Category::find(1);
-//     print_r($cat->posts); 
-    //   $post=post::find(1) ;
-    // print_r($post);     
-    
