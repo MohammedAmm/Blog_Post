@@ -56,15 +56,7 @@
                 {{$comment->body}}
             </div>
             @if($user_id==$comment->user->id)
-            <select>
-                <option>Option</option>
-                <option>
-                       <a href="#">Edit</a>
-                </option>
-                <option>
-                        <a href="#">Delete </a>
-                </option>
-            </select>
+               <a href="PostController.php?delCom&&id={{$comment->id}}">Delete </a>
             @endif
           </div>
             <hr>
