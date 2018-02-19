@@ -12,6 +12,7 @@
             }else{
                 render('index',array('pageTitle' => 'Manage Directory', 'posts' => $posts,'categories'=>$categories,'uname'=>'','user_id'=>'','role'=>''));
             }            
+
         }
         public function customIndex($cat){
             $cat=Category::find_by_name($cat);
@@ -22,6 +23,7 @@
             }else{
                 render('index',array('pageTitle' => 'Manage Directory', 'posts' => $posts,'categories'=>$categories,'uname'=>'','user_id'=>'','role'=>''));
             }  
+
         }
         public function specificPost($id){
             $post=Post::find($id);
@@ -73,6 +75,7 @@
         public function edit()
         {
             # code...
+
         }
         public function addPage()
         {
@@ -83,6 +86,14 @@
         public function update()
         {
             # code...
+
+            $post = Post::find($id);  
+            $post->title = "Some new title";
+            $post->save();
+
+            $_POST['post'] = array('title' => 'New Title', 'body' => 'New body!');
+            $post = Post::find($id);
+            $post->update_attributes($_POST['post']);
         }
         public function delete($id)
         {

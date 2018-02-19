@@ -10,6 +10,7 @@
             }else{
                 render('post',array('pageTitle' => $post->title, 'post' => $post,'uname'=>'','user_id'=>'','role'=>''));
             }        
+
         }
         public function add($id,$body){
             $comment = new Comment();
@@ -18,6 +19,7 @@
             $comment->body = $body;
             $comment->save();
         }
+
     }
     $comCon=new CommentController();
     if(isset($_GET['post_id'])){

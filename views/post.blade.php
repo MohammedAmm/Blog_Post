@@ -28,6 +28,7 @@
           <p>{{$post->body}}</p>
           <hr>
         @if($uname)
+
           <!-- Comments Form -->
         <form class="well form-horizontal" action="../controllers/CommentController.php" method="get"  id="contact_form">   
           <div class="card my-4">
@@ -49,6 +50,7 @@
           @if($comment->is_approved==1)
           <div class="media mb-4">
           <img class="img-fluid rounded" src="../public/images/{{$comment->user->image}}" alt="">
+
             <div class="media-body">
               <h5 class="mt-0">{{$comment->user->fname." ".$comment->user->lname}}</h5>
                 {{$comment->body}}
@@ -67,6 +69,7 @@
           </div>
             <hr>
             @endif
+
             @endforeach
           </div>
 
